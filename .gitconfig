@@ -1,0 +1,32 @@
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = nvim
+	autocrlf = input
+[alias]
+	br = branch
+	co = checkout
+	ci = commit
+	st = status
+  lg = log --color=auto --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	drop = !git stash save -q && git stash drop
+	show-all-dangling-stashes = !git fsck --no-reflog --no-progress | awk '/dangling commit/ {print $3}' #!git log --graph --oneline --decorate --all $( git fsck --no-reflog | awk '/dangling commit/ {print $3}' )
+  p = !git push -u origin $(git rev-parse --abbrev-ref HEAD)
+	b = !git-select-branch
+	; b = !git --no-pager branch --format='%(refname:short)%09%(contents:subject)%09%(committerdate:relative)' --sort=committerdate | mlr --ifs '\t' --opprint cat | tail +2 | fzf --no-sort --tac --preview='echo {} | awk '{ print $1 }' | xargs -n1 git lg --color' | awk '{ print $1 }'
+[user]
+	name = Tobias Dixen Skaarup Wölm
+	email = tobias@tdsw.dk
+[commit]
+	template = ~/.git_commit_template.txt
+[github]
+	user = tobi4161
+[ghi]
+	token = !security find-internet-password -a tobi4161 -s github.com -l 'ghi token' -w
+[url "git@github.com:"]
+	insteadOf = gh:
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+[init]
+	defaultBranch = master
