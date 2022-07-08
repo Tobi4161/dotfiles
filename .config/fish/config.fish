@@ -70,3 +70,5 @@ set -x ERL_AFLAGS "-kernel shell_history enabled"
 source /usr/local/opt/asdf/asdf.fish
 
 eval (brew --prefix z.lua)/share/z.lua/z.lua --init fish enhanced fzf | source
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
