@@ -1,6 +1,7 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
 set PATH ~/bin $PATH
 
-set -x HOMEBREW_GITHUB_API_TOKEN "e196011b1563e275a9cadad8d149ad7cd0d64539"
+source ~/.config/fish/secrets.fish
 
 set -x GOPATH $HOME/go
 set -x PATH $GOPATH/bin $PATH
@@ -67,8 +68,8 @@ set -x ERL_AFLAGS "-kernel shell_history enabled"
 # Ruby stuff
 # status --is-interactive; and source (rbenv init -|psub)
 
-source /usr/local/opt/asdf/asdf.fish
+# source /usr/local/opt/asdf/asdf.fish
 
 eval (brew --prefix z.lua)/share/z.lua/z.lua --init fish enhanced fzf | source
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+set -x GPG_TTY (tty)
